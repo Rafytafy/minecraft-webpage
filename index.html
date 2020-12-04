@@ -21,11 +21,49 @@
         <div>
             <h3>What is the service?</h3>
             <h3>How to implement the service</h3>
+            <div>
+                <h4>VM configuration/Firewall:</h4>
+                <p>To implement this service we used a ubuntu image (18.04 LTS). The reasoning was because a lot of the guides used an ubuntu image to create 
+                    the server. In order to run the game properly we needed at least 1GB of RAM for the service to run properly accoring to the minecraft docs. 
+                    For the machine configuration we used an E2 series and the type was a e2-medium. The system has 4 GB of RAM which was plenty for our service.
+                    After configuring the service i named the server "minecraft-server"
+                </p>
+                <p>
+                    Google cloud by default rejects any traffic comming in that is outside of the network. So I had to create a firewall rule called minecraft-rule 
+                    so that it allows traffic to be directed to the minecraft server. After creating the rule I had to apply it to minecraft-server.
+                </p>
+            </div>
+            <div>
+                <h4>Server configuration</h4>
+                <p>
+                    After updating the server using <strong>sudo apt update</strong> I had to install java and screen to the server running <strong>sudo apt install screen</strong>
+                    and <strong>sudo apt install openjdk-8-jre-headless</strong>. Screen allows an admin to create a terminal session that is detached. Without it the session will end
+                    if you close the terminal.
+                </p>
+                <p>
+                    By default minecraft runs off of port 25565 so I had to open that port on the machine. I ran <strong>sudo ufw allow 25565</strong> and used
+                    this <a href="https://www.yougetsignal.com/tools/open-ports/">service</a> to test if the port is open.
+                </p>
+                <p>
+                    Next I had to create a new user in this system call <strong>mc</strong>. <strong>mc's</strong> home direcotry holds all of files that is used to launch the service.
+                    Within the <strong>mc</strong> directory I used <strong>wget</strong> to retrieve the lastest version of minecraft from minecraft's main website.
+                </p>
+                <p>
+                    After downloading minecraft I <strong>screen</strong> which created a detached terminal session.  Next I ran the minecraft using <strong>java -Xms1024M -Xmx1024M -jar 
+                    server.jar nogui</strong>. This falled to execute because we need to accept the terms and conditions of the eula.txt file that was created when the command ran. 
+                    Within that file I had to set a variable to true in order for the java command to run properly. Now I ran <strong>java -Xms1024M -Xmx1024M -jar 
+                    server.jar nogui</strong> again and this time the service is up and running.
+                </p>
+            </div>
+            
         </div>
         <h2>Group member contribution</h2>
         <div>
             <h3>Daniel</h3>
             <h3>Rafael</h3>
+            <p>
+                I was responsible for the VM configuration, firewall and server set up.
+            </p>
         </div>
         
         <h2>Pictures go below here:</h2>
