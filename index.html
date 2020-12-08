@@ -54,12 +54,22 @@
                     Within that file I had to set a variable to true in order for the java command to run properly. Now I ran <strong>java -Xms1024M -Xmx1024M -jar 
                     server.jar nogui</strong> again and this time the service is up and running.
                 </p>
+                <p> 
+                    After the intial server was created, we wanted to implement plugins in order to make the server more fun. We used spigot, which is a service created to easily add plugins to minecraft
+                    servers. We downloaded spigot from their website and put it in the <strong>mc</strong> home directory. Then, we created a bash script named <strong>start.sh</strong> to run the server
+                    more efficently. The bash script contained the new command to run the server using spigot, <strong>java -Xms1G -Xmx4G -XX:+UseG1GC -jar spigot-1.16.4.jar nogui.</strong>
+                    Running this command also creates a directory named <strong>plugins.</strong> We downloaded three basic plugins to start and put their .jar files in the <strong>plugins</strong> directory. 
+                    The server ran successfully with these plugins installed, and each plugin works successfully. 
+                </p>
             </div>
             
         </div>
         <h2>Group member contribution</h2>
         <div>
             <h3>Daniel</h3>
+            I created an intial verison of the server on an ubuntu VM using VirtualBox. This was then taken and finialized on the google cloud server. I created a bash script, <strong>start.sh</strong> 
+            for the server in order to run the server faster each time. I also added multiple plugins using spigot, a service that is used to run plugins on minecraft servers. Finally, I added whitelisting  
+            to the server in order to keep the server secure and only allow players we want on the server.
             <h3>Rafael</h3>
             <p>
                 I was responsible for the VM configuration, firewall and server set up.
