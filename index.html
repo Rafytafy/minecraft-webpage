@@ -11,6 +11,10 @@
     <h1 class="text-center">Minecraft Server</h1>
     <div class="container">
         <h2>Summary</h2>
+        We created a dedicated minecraft server using an ubuntu instance on google cloud. We both enjoy playing minecraft and wanted a way to play on our own server. 
+        This server can host up to 20 people so we can get all our friends on the server to play. This server has 4 gigabytes of dedicated ram. It runs using spigot,
+        a service used to implement plugins. Multiple plugins were implemented and used in order to make the game more fun. Whitelisting was also added to add security and avoid
+        unwanted players on our server.
         <h2>Background</h2>
         <p>
             During the summer we played a lot of Minecraft and put in some hours into that game. We planned on taking Sys Admin together and when we were given
@@ -20,6 +24,8 @@
         <h2>Project Overview</h2>
         <div>
             <h3>What is the service?</h3>
+            This is a whimsical Minecraft service. It is used when you are bored and want a good time with all your friends. Everyone can play together and have fun in Minecraft. If you are insterested in
+            joining the server, please contact Daniel at dchristenson@oakland.edu. We are open to adding more plugins as people want. 
             <h3>How to implement the service</h3>
             <div>
                 <h4>VM configuration/Firewall:</h4>
@@ -49,10 +55,19 @@
                     Within the <strong>mc</strong> directory I used <strong>wget</strong> to retrieve the lastest version of minecraft from minecraft's main website.
                 </p>
                 <p>
-                    After downloading minecraft I ran the command <strong>screen</strong> which created a detached terminal session.  Next I ran the minecraft service using <strong>java -Xms1024M -Xmx1024M -jar 
-                    server.jar nogui</strong>. This failed to execute because we need to accept the terms and conditions of the eula.txt file that was created when the command ran. 
+
+                    After downloading minecraft I used <strong>screen</strong> which created a detached terminal session.  Next I ran the minecraft using <strong>java -Xms1024M -Xmx1024M -jar 
+                    server.jar nogui</strong>. This falled to execute because we need to accept the terms and conditions of the eula.txt file that was created when the command ran. 
+
                     Within that file I had to set a variable to true in order for the java command to run properly. Now I ran <strong>java -Xms1024M -Xmx1024M -jar 
                     server.jar nogui</strong> again and this time the service is up and running.
+                </p>
+                <p> 
+                    After the intial server was created, we wanted to implement plugins in order to make the server more fun. We used spigot, which is a service created to easily add plugins to minecraft
+                    servers. We downloaded spigot from their website and put it in the <strong>mc</strong> home directory. Then, we created a bash script named <strong>start.sh</strong> to run the server
+                    more efficently. The bash script contained the new command to run the server using spigot, <strong>java -Xms1G -Xmx4G -XX:+UseG1GC -jar spigot-1.16.4.jar nogui.</strong>
+                    Running this command also creates a directory named <strong>plugins.</strong> We downloaded three basic plugins to start and put their .jar files in the <strong>plugins</strong> directory. 
+                    The server ran successfully with these plugins installed, and each plugin works successfully. 
                 </p>
             </div>
             
@@ -60,6 +75,9 @@
         <h2>Group member contribution</h2>
         <div>
             <h3>Daniel</h3>
+            I created an intial verison of the server on an ubuntu VM using VirtualBox. This was then taken and finialized on the google cloud server. I created a bash script, <strong>start.sh</strong> 
+            for the server in order to run the server faster each time. I also added multiple plugins using spigot, a service that is used to run plugins on minecraft servers. Finally, I added whitelisting  
+            to the server in order to keep the server secure and only allow players we want on the server.
             <h3>Rafael</h3>
             <p>
                 I was responsible for the VM configuration, firewall and server set up.
@@ -67,7 +85,10 @@
         </div>
         
         <h2>Pictures go below here:</h2>
-
+        Starting the server in the terminal:
+        <img src = "server start.PNG">
+        Terminal as server is running: 
+        <img src = "server run.PNG">
     </div>
 </body>
 </html>
