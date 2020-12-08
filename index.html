@@ -24,20 +24,20 @@
             <div>
                 <h4>VM configuration/Firewall:</h4>
                 <p>To implement this service we used a ubuntu image (18.04 LTS). The reasoning was because a lot of the guides used an ubuntu image to create 
-                    the server. In order to run the game properly we needed at least 1GB of RAM for the service to run properly accoring to the minecraft docs. 
+                    the server. According to the minecraft docs, in order to run the game properly we needed at least 1GB of RAM. 
                     For the machine configuration we used an E2 series and the type was a e2-medium. The system has 4 GB of RAM which was plenty for our service.
-                    After configuring the service i named the server "minecraft-server"
+                    After configuring the service I named the server <em>minecraft-server</em>.
                 </p>
                 <p>
-                    Google cloud by default rejects any traffic comming in that is outside of the network. So I had to create a firewall rule called minecraft-rule 
-                    so that it allows traffic to be directed to the minecraft server. After creating the rule I had to apply it to minecraft-server.
+                    Google cloud by default rejects any traffic coming in that is outside of the network. So I had to create a firewall rule called <em>minecraft-rule</em>
+                    so that it allows traffic to be directed to the minecraft server. After creating the rule I had to apply it to <em>minecraft-server</em>.
                 </p>
             </div>
             <div>
                 <h4>Server configuration</h4>
                 <p>
                     After updating the server using <strong>sudo apt update</strong> I had to install java and screen to the server running <strong>sudo apt install screen</strong>
-                    and <strong>sudo apt install openjdk-8-jre-headless</strong>. Screen allows an admin to create a terminal session that is detached. Without it the session will end
+                    and <strong>sudo apt install openjdk-8-jre-headless</strong>. Screen allows an admin to create a terminal session that is detached. Without it, the session will end
                     if you close the terminal.
                 </p>
                 <p>
@@ -49,8 +49,10 @@
                     Within the <strong>mc</strong> directory I used <strong>wget</strong> to retrieve the lastest version of minecraft from minecraft's main website.
                 </p>
                 <p>
+
                     After downloading minecraft I used <strong>screen</strong> which created a detached terminal session.  Next I ran the minecraft using <strong>java -Xms1024M -Xmx1024M -jar 
                     server.jar nogui</strong>. This falled to execute because we need to accept the terms and conditions of the eula.txt file that was created when the command ran. 
+
                     Within that file I had to set a variable to true in order for the java command to run properly. Now I ran <strong>java -Xms1024M -Xmx1024M -jar 
                     server.jar nogui</strong> again and this time the service is up and running.
                 </p>
